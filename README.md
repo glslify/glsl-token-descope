@@ -26,7 +26,7 @@ For example:
 
 ``` javascript
 var tokenize  = require('glsl-tokenizer/string')
-var descope   = require('./')
+var descope   = require('glsl-token-descope')
 var stringify = require('glsl-token-string')
 
 var src = `
