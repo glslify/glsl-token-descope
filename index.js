@@ -30,7 +30,7 @@ function glslTokenDescope(tokens, rename) {
       if (j) break
 
       token.descoped = token.data
-      token.data = map[name] = map[name] || renamer(name) || token.data
+      token.data = map[name] = map[name] || renamer(name, token) || token.data
     }
   }
 
