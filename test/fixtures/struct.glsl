@@ -24,4 +24,6 @@ void main() {
   } local;
 
   local.x;
+
+  unbound;
 }

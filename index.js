@@ -21,14 +21,25 @@ function glslTokenDescope(tokens, rename) {
     if (token.property) continue
     if (token.structMember) continue
 
+    var bound = false
+
     for (var j = stack.length - 1; j >= 0; j--) {
       var s = scope[stack[j]]
       if (!s) continue
       if (!s[name]) continue
 
+      bound = true
+
       // exit if declaration not in top-level scope
       if (j) break
 
+      token.descoped = token.data
+      token.data = map[name] = map[name] || renamer(name, token) || token.data
+    }
+
+    // Handle unbound variables, i.e. ones not defined anywhere
+    // in the shader source but still used.
+    if (!bound) {
       token.descoped = token.data
       token.data = map[name] = map[name] || renamer(name, token) || token.data
     }

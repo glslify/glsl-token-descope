@@ -34,6 +34,7 @@ test('struct', (t) => {
   t.notEqual(renamed.indexOf(orig2new.inlined + '.x'), -1, 'inlined\'s .x property was preserved')
   t.notEqual(renamed.indexOf(orig2new.inlined + '.y'), -1, 'inlined\'s .y property was preserved')
 
+  t.notEqual(renamed.indexOf(orig2new.unbound), -1, 'unbound value was renamed')
   t.notEqual(renamed.indexOf(orig2new.StructName + ' x = ' + orig2new.StructName + '(1.0, 0.0);'), -1, 'StructName was renamed in main()')
 
   // Should not rename x/y in the following case:
